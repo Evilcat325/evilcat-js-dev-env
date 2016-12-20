@@ -4,7 +4,10 @@
   "description": "JavaScript development environment",
   "scripts": {
     "prestart": "node buildScripts/startMessage.js",
-    "start": "node buildScripts/srcServer.js"
+    "start": "run-p security-check open:src",
+    "open:src": "node buildScripts/srcServer.js",
+    "security-check": "nsp check",
+    "share": "ls --port 3000"
   },
   "author": "Evilcat",
   "license": "MIT",
