@@ -1,2 +1,2 @@
-# evilcat-js-dev-env-
+# evilcat-js-dev-env
 JavaScript Development Environment Kit
