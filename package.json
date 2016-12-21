@@ -4,13 +4,14 @@
   "description": "JavaScript development environment",
   "scripts": {
     "prestart": "babel-node buildScripts/startMessage.js",
-    "start": "run-p security-check open:src lint:watch",
+    "start": "run-p security-check open:src lint:watch test:watch",
     "open:src": "babel-node buildScripts/srcServer.js",
     "security-check": "nsp check",
     "share": "ls --port 3000",
     "lint": "esw webpack.config.* src buildScripts --color",
     "lint:watch": "npm run lint -- --watch",
-    "test": "mocha --reported progress buildScripts/testSetup.js \"src/**/*.spec.js\""
+    "test": "mocha --reported progress buildScripts/testSetup.js \"src/**/*.spec.js\"",
+    "test:watch": "npm run test -- --watch"
   },
   "author": "Evilcat",
   "license": "MIT",
