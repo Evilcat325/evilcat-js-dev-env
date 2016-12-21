@@ -1,6 +1,7 @@
-import numeral from 'numeral';
 import './index.css';
 
+const Calculator = () => {};
 
-const courseValue = numeral(1000).format('$0,0.00');
-console.log(`I woud pay ${courseValue} for this awesome course`); // eslint-disable-line no-console
+Calculator.prototype.add = (a, b) => a + b;
+
+export default Calculator;

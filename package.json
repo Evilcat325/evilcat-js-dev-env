@@ -9,7 +9,8 @@
     "security-check": "nsp check",
     "share": "ls --port 3000",
     "lint": "esw webpack.config.* src buildScripts --color",
-    "lint:watch": "npm run lint -- --watch"
+    "lint:watch": "npm run lint -- --watch",
+    "test": "mocha --reported progress buildScripts/testSetup.js \"src/**/*.spec.js\""
   },
   "author": "Evilcat",
   "license": "MIT",
