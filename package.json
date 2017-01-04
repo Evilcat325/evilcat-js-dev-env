@@ -5,14 +5,14 @@
   "scripts": {
     "prestart": "babel-node buildScripts/startMessage.js",
     "start": "run-p security-check generate-mock-data open:src lint:watch test:watch",
-    "open:src": "nodemon buildScripts/srcServer.js --exec babel-node",
+    "open:src": "nodemon buildScripts/srcServer.js --exec babel-node --ignore 'src/**/*.js'",
     "security-check": "nsp check",
     "share": "ls --port 3000",
     "lint": "esw webpack.config.* src buildScripts --color",
     "lint:watch": "npm run lint -- --watch",
     "test": "mocha --reported progress buildScripts/testSetup.js \"./**/*.spec.js\"",
     "test:watch": "npm run test -- --watch",
-    "generate-mock-data": "babel-node buildScripts/generateMockData"
+    "generate-mock-data": "babel-node mock/generateMockData"
   },
   "author": "Evilcat",
   "license": "MIT",
