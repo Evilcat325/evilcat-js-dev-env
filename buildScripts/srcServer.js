@@ -1,9 +1,10 @@
 import express from 'express';
 import path from 'path';
-import open from 'open';
 import webpack from 'webpack';
 import webpackdev from 'webpack-dev-middleware';
+import graphqlHTTP from 'express-graphql';
 import config from '../webpack.config.dev';
+import schema from '../mock/schema';
 
 /* eslint-disable no-console */
 
@@ -20,10 +21,10 @@ app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, '../src/index.html'));
 });
 
-app.listen(port, (err) => {
-  if (err) {
-    console.log(err);
-  } else {
-    open(`http://localhost:${port}`);
-  }
-});
+app.use('/graphql', graphqlHTTP({
+  schema,
+  graphiql: true,
+}));
+
+app.set('port', process.env.PORT || port);
+const server = app.listen(app.get('port'), () => console.log(`Express server listening on port ${server.address().port}`));
