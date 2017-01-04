@@ -12,7 +12,11 @@
     "lint:watch": "npm run lint -- --watch",
     "test": "mocha --reported progress buildScripts/testSetup.js \"./**/*.spec.js\"",
     "test:watch": "npm run test -- --watch",
-    "generate-mock-data": "babel-node mock/generateMockData"
+    "generate-mock-data": "babel-node mock/generateMockData",
+    "clean-dist": "rimraf ./dist && mkdir dist",
+    "prebuild": "run-s clean-dist test lint",
+    "build": "babel-node buildScripts/build.js",
+    "postbuild": "babel-node buildScripts/distServer.js"
   },
   "author": "Evilcat",
   "license": "MIT",
